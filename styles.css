@@ -1,0 +1,96 @@
+.current-loc {
+  position: fixed;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+#curr-loc-but {
+  color: #fff;
+  background-color: #4ef037;
+  font-size: 16px;
+  padding: 1px 7px;
+  border-radius: 0px;
+  border: solid 1px #000;
+  margin: 0px;
+}
+
+body {
+  background: radial-gradient(
+    592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgb(160, 199, 254) 74.6%
+  );
+}
+.search-bar {
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.buttons {
+  padding: 5px 10px 20px 12px;
+}
+
+.imp-but,
+.met-but {
+  background-color: #f1865e;
+  color: #fff;
+  font-size: 16px;
+  border: #fadfd5;
+}
+
+header {
+  padding: 15px;
+}
+
+h1 {
+  font-size: 40px;
+  color: #00bbf0;
+}
+
+h2 {
+  font-size: 36px;
+  color: #005792;
+}
+
+h3 {
+  font-size: 60px;
+}
+ul,
+li {
+  padding: 0px;
+  margin: 0px;
+}
+
+.after-even {
+  margin: 25px 0px;
+}
+
+.next-five {
+  margin: 20px;
+}
+
+.this-aft,
+.this-even {
+  margin: 0px 10px 25px 0px;
+  font-size: 32px;
+  text-align: center;
+  width: 300px;
+  background: #fecea8;
+  color: #393e46;
+  border: solid 2px #240747;
+}
+
+.tues-card,
+.weds-card,
+.thurs-card,
+.fri-card,
+.sat-card {
+  font-size: 28px;
+  text-align: center;
+  width: 200px;
+  background: #f67280;
+  color: #2d4059;
+  margin: 0px 10px;
+  padding: 10px;
+  border: solid 1.5px #240747;
+}
