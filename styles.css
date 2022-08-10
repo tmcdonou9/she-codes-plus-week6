@@ -55,6 +55,9 @@ h2 {
 h3 {
   font-size: 60px;
 }
+ul {
+  list-style: none;
+}
 ul,
 li {
   padding: 0px;
