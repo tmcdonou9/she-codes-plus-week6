@@ -42,24 +42,28 @@ if (minutes < 10) {
 
 currently.innerHTML = `Last updated on ${day}, ${month} ${date}, ${year} at ${hours}:${minutes}`;
 
-// Week 4?
-// function showWeather(response) {
-//   document.querySelector("#current-view").innerHTML = response.data.name;
-//   document.querySelector("#current-temp").innerHTML = Math.round(
-//     response.data.main.temp
-//   );
-//   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-//   document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
-//   document.querySelector("#description").innerHTML =
-//     response.data.weather[0].main;
+// Week 4? not sure what this was for at the moment
+function displayTemperature(response) {
+  document.querySelector("#currently-viewing").innerHTML = response.data.name;
+  document.querySelector("#current-temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].main;
+}
+// NEED TO SEE IF THIS WORKS BETTER
+// function displayTemperature(response) {
+//   let temperatureElement = document.querySelector("#");
 // }
-//search function to locate weather city
-function searchEngine(event) {
-  event.preventDefault();
+
+//search function to locate weather city & call the API
+function searchEngine(city) {
   let apiKey = "29a4ad7a3a9232d56b27c341061a6051";
-  let city = document.querySelector("#search-text").value;
+  //let city = document.querySelector("#search-text").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
+  axios.get(apiUrl).then(displayTemperature);
 }
 //search function to locate weather when clicking "enter"
 // function searchPressEnter(event) {
@@ -90,13 +94,14 @@ function showTemperature(response) {
   currentTemperature.innerHTML = `${response.data.main.temp}°C`;
 }
 
-function retrieveCity(position) {
+//clicking on "Current Location" button to get weather at current location.
+function retrieveCurrentCity(position) {
   let apiKey = "29a4ad7a3a9232d56b27c341061a6051";
   let city = document.querySelector("#search-text");
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
-navigator.geolocation.getCurrentPosition(retrieveCity);
+navigator.geolocation.getCurrentPosition(retrieveCurrentCity);
 //
 //
 //Week 5 Bonus HW Challenge:
