@@ -1,4 +1,4 @@
-// Feature #1
+// START OF DATE FORMAT
 let now = new Date();
 
 let currently = document.querySelector("#last-updated");
@@ -41,58 +41,56 @@ if (minutes < 10) {
 }
 
 currently.innerHTML = `Last updated on ${day}, ${month} ${date}, ${year} at ${hours}:${minutes}`;
+//END OF DATE FORMATE
 
-// Week 4? not sure what this was for at the moment
+// START FUNCTION TO SHOW CURRENT WEATHER INFO
 function displayTemperature(response) {
-  document.querySelector("#currently-viewing").innerHTML = response.data.name;
-  document.querySelector("#current-temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+  let temperatureElement = document.querySelector("#current-temperature");
+  let cityElement = document.querySelector("#currently-viewing-city");
+  let descriptionElement = document.querySelector("#current-description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind-speed");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = response.data.wind.speed;
 }
-// NEED TO SEE IF THIS WORKS BETTER
-// function displayTemperature(response) {
-//   let temperatureElement = document.querySelector("#");
-// }
+// END FUNCTION TO SHOW CURRENT WEATHER INFO
 
-//search function to locate weather city & call the API
+//START FUNCTION TO CALL API TO SEARCH CITY
 function searchEngine(city) {
   let apiKey = "29a4ad7a3a9232d56b27c341061a6051";
-  //let city = document.querySelector("#search-text").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
-//search function to locate weather when clicking "enter"
+//END FUNCTION TO CALL API TO SEARCH CITY
+
+//START FUNCTION FOR FORM SEARCH
 function searchPressEnter(event) {
   event.preventDefault();
-  let city = document.querySelector("#search-text");
-  search(city.value);
+  let cityInputElement = document.querySelector("#search-text");
+  search(cityInputElement.value);
 }
+//END FUNCTION FOR FORM SEARCH
 
-//click on "Search" button
-let searchButton = document.querySelector("#search-form");
-searchButton.addEventListener("submit", searchEngine);
+//Function to allow "Search" interaction
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", searchPressEnter);
 
-//press enter instead of "Search" button
-// let enterSearchButt = document.querySelector("#search-button");
-// searchButt.addEventListener("keydown", searchPressEnter);
+//added from week 5 -- comment out on 8/10 bc repeats/not needed yet?
+// function showTemperature(response) {
+//   let temperature = Math.round(response.data.main.temp);
+//   let city = response.data.name;
+//   let currentlyViewing = document.querySelector("#currently-viewing");
+//   let currentDescription = document.querySelector("#current-desc");
+//   let currentTemperature = document.querySelector("current-temp");
+//   currentlyViewing.innerHTML = `Currently viewing: ${city}`;
+//   currentDescription.innerHTML = `${response.data.weather.description}`;
+//   currentTemperature.innerHTML = `${response.data.main.temp}°C`;
+// }
 
-//added from week 5
-function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let city = response.data.name;
-  let currentlyViewing = document.querySelector("#currently-viewing");
-  let currentDescription = document.querySelector("#current-desc");
-  let currentTemperature = document.querySelector("current-temp");
-  currentlyViewing.innerHTML = `Currently viewing: ${city}`;
-  currentDescription.innerHTML = `${response.data.weather.description}`;
-  currentTemperature.innerHTML = `${response.data.main.temp}°C`;
-}
-
-//clicking on "Current Location" button to get weather at current location.
+//START FUNCTION TO RETRIEVE CURRENT CITY??
 function retrieveCurrentCity(position) {
   let apiKey = "29a4ad7a3a9232d56b27c341061a6051";
   let city = document.querySelector("#search-text");
@@ -100,22 +98,24 @@ function retrieveCurrentCity(position) {
   axios.get(apiUrl).then(showTemperature);
 }
 navigator.geolocation.getCurrentPosition(retrieveCurrentCity);
+//END FUNCTION TO RETRIEVE CURRENT CITY??
 //
-//
-//Week 5 Bonus HW Challenge:
+//START FUNCTION TO LOCATE CURRENT COORDINATES??
 function getCoordinates(position) {
   let apiKey = "29a4ad7a3a9232d56b27c341061a6051";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
 }
-
+//END FUNCTION TO LOCATE CURRENT COORDINATES??
+//START FUNCTION TO FIND CURRENT LOCATION??
 function findCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCoordinates);
   // let searchInput = document.querySelector();
   // axios.get(apiUrl).then(getCoordinates);
 }
-
+//END FUNCTION TO FIND CURRENT LOCATION??
+//UHHH NOT SURE AT THE MOMENT FOR THIS...???
 let currentLocationButton = document.querySelector("#curr-loc-but");
 currentLocationButton.addEventListener("click", findCurrentLocation);
 //
