@@ -66,6 +66,14 @@ function searchEngine(city) {
 }
 //END FUNCTION TO CALL API TO SEARCH CITY
 
+//START FUNCTION FOR FORM SEARCH
+function searchPressEnter(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  searchEngine(cityInputElement.value);
+}
+//END FUNCTION FOR FORM SEARCH
+
 //START FUNCTION TO RETRIEVE CURRENT CITY??
 function retrieveCurrentCity(position) {
   let apiKey = "29a4ad7a3a9232d56b27c341061a6051";
@@ -90,14 +98,6 @@ function findCurrentLocation(event) {
   // let searchInput = document.querySelector();
   // axios.get(apiUrl).then(getCoordinates);
 }
-
-//START FUNCTION FOR FORM SEARCH
-function searchPressEnter(event) {
-  event.preventDefault();
-  let cityInputElement = document.querySelector("#search-text");
-  search(cityInputElement.value);
-}
-//END FUNCTION FOR FORM SEARCH
 
 //Function to allow "Search" interaction
 let searchForm = document.querySelector("#search-form");
