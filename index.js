@@ -1,7 +1,7 @@
 // Feature #1
 let now = new Date();
 
-let currently = document.querySelector("#updated");
+let currently = document.querySelector("#last-updated");
 
 let days = [
   "Sunday",
@@ -43,16 +43,16 @@ if (minutes < 10) {
 currently.innerHTML = `Last updated on ${day}, ${month} ${date}, ${year} at ${hours}:${minutes}`;
 
 // Week 4?
-function showWeather(response) {
-  document.querySelector("#current-view").innerHTML = response.data.name;
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
-}
+// function showWeather(response) {
+//   document.querySelector("#current-view").innerHTML = response.data.name;
+//   document.querySelector("#current-temp").innerHTML = Math.round(
+//     response.data.main.temp
+//   );
+//   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+//   document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
+//   document.querySelector("#description").innerHTML =
+//     response.data.weather[0].main;
+// }
 //search function to locate weather city
 function searchEngine(event) {
   event.preventDefault();
@@ -71,25 +71,22 @@ function searchEngine(event) {
 // }
 
 //click on "Search" button
-let searchButt = document.querySelector("#search-form");
-searchButt.addEventListener("submit", searchEngine);
+let searchButton = document.querySelector("#search-form");
+searchButton.addEventListener("submit", searchEngine);
 
 //press enter instead of "Search" button
 // let enterSearchButt = document.querySelector("#search-button");
 // searchButt.addEventListener("keydown", searchPressEnter);
 
 //added from week 5
-function showTemp(response) {
-  console.log(response);
-
+function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
-  console.log(temperature);
   let city = response.data.name;
-  let viewing = document.querySelector("#currently-viewing");
-  let currentDesc = document.querySelector("#current-desc");
+  let currentlyViewing = document.querySelector("#currently-viewing");
+  let currentDescription = document.querySelector("#current-desc");
   let currentTemperature = document.querySelector("current-temp");
-  viewing.innerHTML = `Currently viewing: ${city}`;
-  currentDesc.innerHTML = `${response.data.weather.description}`;
+  currentlyViewing.innerHTML = `Currently viewing: ${city}`;
+  currentDescription.innerHTML = `${response.data.weather.description}`;
   currentTemperature.innerHTML = `${response.data.main.temp}°C`;
 }
 
@@ -97,7 +94,7 @@ function retrieveCity(position) {
   let apiKey = "29a4ad7a3a9232d56b27c341061a6051";
   let city = document.querySelector("#search-text");
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemp);
+  axios.get(apiUrl).then(showTemperature);
 }
 navigator.geolocation.getCurrentPosition(retrieveCity);
 //
@@ -109,15 +106,15 @@ function getCoordinates(position) {
   axios.get(apiUrl).then(showWeather);
 }
 
-function findCurrentLoc(event) {
+function findCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCoordinates);
   // let searchInput = document.querySelector();
   // axios.get(apiUrl).then(getCoordinates);
 }
 
-let greenButton = document.querySelector("#curr-loc-but");
-greenButton.addEventListener("click", findCurrentLoc);
+let currentLocationButton = document.querySelector("#curr-loc-but");
+currentLocationButton.addEventListener("click", findCurrentLocation);
 //
 //
 //
