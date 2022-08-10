@@ -68,7 +68,8 @@ function searchEngine(city) {
 //search function to locate weather when clicking "enter"
 function searchPressEnter(event) {
   event.preventDefault();
-  let city = document.querySelector("#search-text").value;
+  let city = document.querySelector("#search-text");
+  search(city.value);
 }
 
 //click on "Search" button
