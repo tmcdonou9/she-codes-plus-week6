@@ -66,30 +66,6 @@ function searchEngine(city) {
 }
 //END FUNCTION TO CALL API TO SEARCH CITY
 
-//START FUNCTION FOR FORM SEARCH
-function searchPressEnter(event) {
-  event.preventDefault();
-  let cityInputElement = document.querySelector("#search-text");
-  search(cityInputElement.value);
-}
-//END FUNCTION FOR FORM SEARCH
-
-//Function to allow "Search" interaction
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchPressEnter);
-
-//added from week 5 -- comment out on 8/10 bc repeats/not needed yet?
-// function showTemperature(response) {
-//   let temperature = Math.round(response.data.main.temp);
-//   let city = response.data.name;
-//   let currentlyViewing = document.querySelector("#currently-viewing");
-//   let currentDescription = document.querySelector("#current-desc");
-//   let currentTemperature = document.querySelector("current-temp");
-//   currentlyViewing.innerHTML = `Currently viewing: ${city}`;
-//   currentDescription.innerHTML = `${response.data.weather.description}`;
-//   currentTemperature.innerHTML = `${response.data.main.temp}°C`;
-// }
-
 //START FUNCTION TO RETRIEVE CURRENT CITY??
 function retrieveCurrentCity(position) {
   let apiKey = "29a4ad7a3a9232d56b27c341061a6051";
@@ -114,6 +90,18 @@ function findCurrentLocation(event) {
   // let searchInput = document.querySelector();
   // axios.get(apiUrl).then(getCoordinates);
 }
+
+//START FUNCTION FOR FORM SEARCH
+function searchPressEnter(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#search-text");
+  search(cityInputElement.value);
+}
+//END FUNCTION FOR FORM SEARCH
+
+//Function to allow "Search" interaction
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", searchPressEnter);
 //END FUNCTION TO FIND CURRENT LOCATION??
 //UHHH NOT SURE AT THE MOMENT FOR THIS...???
 let currentLocationButton = document.querySelector("#curr-loc-but");
