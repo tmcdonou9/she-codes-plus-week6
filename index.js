@@ -109,7 +109,6 @@ function getCoordinates(position) {
 //END FUNCTION TO LOCATE CURRENT COORDINATES??
 //START FUNCTION TO FIND CURRENT LOCATION??
 function findCurrentLocation(event) {
-  event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCoordinates);
   // let searchInput = document.querySelector();
   // axios.get(apiUrl).then(getCoordinates);
