@@ -52,7 +52,8 @@ h2 {
   color: #005792;
 }
 
-h3 {
+h3,
+h4 {
   font-size: 60px;
 }
 ul {
