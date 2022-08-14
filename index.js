@@ -141,10 +141,10 @@ let celsiusTemperature = null;
 let currentLocationButton = document.querySelector("#curr-loc-but");
 currentLocationButton.addEventListener("click", findCurrentLocation);
 
-let metricButton = document.querySelector("#metric-button");
+let metricButton = document.querySelector(".metric-button");
 metricButton.addEventListener("click", displayMetricTemperature);
 
-let imperialButton = document.querySelector("#imperial-button");
+let imperialButton = document.querySelector(".imperial-button");
 imperialButton.addEventListener("click", displayImperialTemperature);
 //
 //
