@@ -148,7 +148,7 @@ let imperialButton = document.querySelector(".imperial-button");
 imperialButton.addEventListener("click", displayImperialTemperature);
 
 searchEngine("New York");
-console.log();
+
 //
 //
 //
