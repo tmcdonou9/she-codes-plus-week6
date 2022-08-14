@@ -58,7 +58,7 @@ function displayTemperature(response) {
   celsiusTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
-  cityElement.innerHTML = response.data.name;
+  cityElement.innerHTML = toUpperCase(response.data.name);
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = response.data.wind.speed;
@@ -104,14 +104,14 @@ function getCoordinates(position) {
   axios.get(apiUrl).then(showWeather);
 }
 //END FUNCTION TO LOCATE CURRENT COORDINATES??
+
 //START FUNCTION TO FIND CURRENT LOCATION??
 function findCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCoordinates);
-  // let searchInput = document.querySelector();
-  // axios.get(apiUrl).then(getCoordinates);
 }
 //END FUNCTION TO FIND CURRENT LOCATION??
+
 //START FUNCTION TO SHOW IMPERIAL UNITS
 function displayImperialTemperature(event) {
   event.preventDefault();
