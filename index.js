@@ -138,7 +138,7 @@ searchForm.addEventListener("submit", searchPressEnter);
 let celsiusTemperature = null;
 
 //UHHH NOT SURE AT THE MOMENT FOR THIS...???
-let currentLocationButton = document.querySelector("#curr-loc-but");
+let currentLocationButton = document.querySelector(".curr-loc-but");
 currentLocationButton.addEventListener("click", findCurrentLocation);
 
 let metricButton = document.querySelector(".metric-button");
